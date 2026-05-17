@@ -14,6 +14,20 @@
   const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
   let currentSpeed = 1;
+  let videoEl = null;
+  let attachInterval = null;
+
+  function attachVideo() {
+    clearInterval(attachInterval);
+    attachInterval = setInterval(function () {
+      const el = document.querySelector('video');
+      if (el) {
+        videoEl = el;
+        videoEl.playbackRate = currentSpeed;
+        clearInterval(attachInterval);
+      }
+    }, 500);
+  }
 
   function setActiveButton(speed) {
     const panel = document.getElementById('dplus-speed-ui');
@@ -70,6 +84,7 @@
 
   injectUI();
   setActiveButton(currentSpeed);
+  attachVideo();
 
   let fadeTimer = null;
 
