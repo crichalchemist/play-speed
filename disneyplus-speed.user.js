@@ -57,4 +57,20 @@
   }
 
   injectUI();
+
+  let fadeTimer = null;
+
+  function showPanel() {
+    const panel = document.getElementById('dplus-speed-ui');
+    if (!panel) return;
+    panel.style.opacity = '1';
+    panel.style.pointerEvents = 'auto';
+    clearTimeout(fadeTimer);
+    fadeTimer = setTimeout(function () {
+      panel.style.opacity = '0';
+      panel.style.pointerEvents = 'none';
+    }, 3000);
+  }
+
+  document.addEventListener('mousemove', showPanel);
 })();
