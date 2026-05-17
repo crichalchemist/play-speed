@@ -4,7 +4,7 @@
 // @version      1.0
 // @description  Floating playback speed controls for Disney+
 // @author       You
-// @match        https://www.disneyplus.com/video/*
+// @match        https://www.disneyplus.com/play/*
 // @grant        none
 // ==/UserScript==
 
