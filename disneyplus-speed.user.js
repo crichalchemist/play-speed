@@ -94,6 +94,15 @@
   setActiveButton(currentSpeed);
   attachVideo();
 
+  let lastUrl = location.href;
+  setInterval(function () {
+    if (location.href !== lastUrl) {
+      lastUrl = location.href;
+      videoEl = null;
+      attachVideo();
+    }
+  }, 1000);
+
   let fadeTimer = null;
 
   function showPanel() {
