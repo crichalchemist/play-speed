@@ -28,7 +28,8 @@ Three logical parts:
 
 ### Video Finder
 
-- `setInterval` at 500ms queries `document.querySelector('video')`
+- `setInterval` at 500ms scans all `<video>` elements for one with `readyState > 0`
+- Disney+ has a hidden stub `<video>` element (display:none, readyState 0) that loads first — `readyState > 0` selects the real player
 - On first match: stores reference, applies `currentSpeed`, clears interval
 - A second 1000ms interval watches `location.href` for SPA navigation
 - On URL change: nulls the stored video reference and restarts the attach interval
@@ -55,7 +56,7 @@ Three logical parts:
 **Z-index:** 99999  
 **Appearance:** Semi-transparent dark pill (`rgba(0,0,0,0.75)`, `border-radius: 8px`, `padding: 6px 10px`)  
 **Font:** Small, sans-serif  
-**Matches URL:** `https://www.disneyplus.com/video/*`
+**Matches URL:** `https://www.disneyplus.com/play/*`
 
 ```
 ╭─────────────────────────────────╮

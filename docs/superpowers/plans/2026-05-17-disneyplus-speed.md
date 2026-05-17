@@ -32,7 +32,7 @@
 // @version      1.0
 // @description  Floating playback speed controls for Disney+
 // @author       You
-// @match        https://www.disneyplus.com/video/*
+// @match        https://www.disneyplus.com/play/*
 // @grant        none
 // ==/UserScript==
 
@@ -241,7 +241,7 @@ Add after `let currentSpeed = 1;`:
   function attachVideo() {
     clearInterval(attachInterval);
     attachInterval = setInterval(function () {
-      const el = document.querySelector('video');
+      const el = [...document.querySelectorAll('video')].find(v => v.readyState > 0);
       if (el) {
         videoEl = el;
         videoEl.playbackRate = currentSpeed;
@@ -360,7 +360,7 @@ git commit -m "feat: re-attach video on SPA navigation to persist speed"
 // @version      1.0
 // @description  Floating playback speed controls for Disney+
 // @author       You
-// @match        https://www.disneyplus.com/video/*
+// @match        https://www.disneyplus.com/play/*
 // @grant        none
 // ==/UserScript==
 
@@ -436,7 +436,7 @@ git commit -m "feat: re-attach video on SPA navigation to persist speed"
   function attachVideo() {
     clearInterval(attachInterval);
     attachInterval = setInterval(function () {
-      const el = document.querySelector('video');
+      const el = [...document.querySelectorAll('video')].find(v => v.readyState > 0);
       if (el) {
         videoEl = el;
         videoEl.playbackRate = currentSpeed;
