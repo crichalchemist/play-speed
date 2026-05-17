@@ -79,6 +79,14 @@
       panel.appendChild(btn);
     });
 
+    panel.addEventListener('click', function (e) {
+      const btn = e.target.closest('button[data-speed]');
+      if (!btn) return;
+      currentSpeed = parseFloat(btn.dataset.speed);
+      if (videoEl) videoEl.playbackRate = currentSpeed;
+      setActiveButton(currentSpeed);
+    });
+
     document.body.appendChild(panel);
   }
 
