@@ -13,6 +13,18 @@
 
   const SPEEDS = [0.5, 0.75, 1, 1.25, 1.5, 2];
 
+  let currentSpeed = 1;
+
+  function setActiveButton(speed) {
+    const panel = document.getElementById('dplus-speed-ui');
+    if (!panel) return;
+    panel.querySelectorAll('button').forEach(function (btn) {
+      const isActive = parseFloat(btn.dataset.speed) === speed;
+      btn.style.background = isActive ? 'white' : 'transparent';
+      btn.style.color = isActive ? '#000' : 'white';
+    });
+  }
+
   function injectUI() {
     if (document.getElementById('dplus-speed-ui')) return;
 
@@ -57,6 +69,7 @@
   }
 
   injectUI();
+  setActiveButton(currentSpeed);
 
   let fadeTimer = null;
 
