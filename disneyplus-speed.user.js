@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Disney+ Speed Controller
 // @namespace    http://tampermonkey.net/
-// @version      1.0
+// @version      1.1
 // @description  Floating playback speed controls for Disney+
 // @author       crichalchemist 
 // @match        https://www.disneyplus.com/play/*
@@ -104,6 +104,21 @@
   }
 
   document.addEventListener('mousemove', showPanel);
+
+  document.addEventListener('keydown', function (e) {
+    const tag = document.activeElement?.tagName;
+    if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT') return;
+    if (e.key === '[') {
+      currentSpeed = Math.max(0.5, currentSpeed - 0.25);
+    } else if (e.key === ']') {
+      currentSpeed = Math.min(2, currentSpeed + 0.25);
+    } else {
+      return;
+    }
+    if (videoEl) videoEl.playbackRate = currentSpeed;
+    setActiveButton(currentSpeed);
+    showPanel();
+  });
 
   injectUI();
   setActiveButton(currentSpeed);
