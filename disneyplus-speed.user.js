@@ -80,7 +80,7 @@
   function attachVideo() {
     clearInterval(attachInterval);
     attachInterval = setInterval(function () {
-      const el = document.querySelector('video');
+      const el = [...document.querySelectorAll('video')].find(v => v.readyState > 0);
       if (el) {
         videoEl = el;
         videoEl.playbackRate = currentSpeed;
