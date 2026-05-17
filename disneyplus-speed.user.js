@@ -3,7 +3,7 @@
 // @namespace    http://tampermonkey.net/
 // @version      1.0
 // @description  Floating playback speed controls for Disney+
-// @author       You
+// @author       crichalchemist 
 // @match        https://www.disneyplus.com/play/*
 // @grant        none
 // ==/UserScript==
