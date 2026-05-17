@@ -22,6 +22,15 @@ A Tampermonkey userscript that adds a floating playback speed panel to Disney+.
 
 Navigate to any Disney+ video (`https://www.disneyplus.com/play/...`). Move your mouse to reveal the speed panel in the bottom-right corner. Click a speed to apply it. The panel fades after 3 seconds of inactivity.
 
+## Keyboard Shortcuts
+
+| Key | Action |
+|---|---|
+| `]` | Speed up (+ 0.25×, max 2×) |
+| `[` | Slow down (− 0.25×, min 0.5×) |
+
+Shortcuts have no effect while a text input is focused (e.g. Disney+'s search box).
+
 ## Notes
 
 - Disney+ has a hidden `<video>` stub element that loads first in the DOM — the script identifies the real player by `readyState > 0`
